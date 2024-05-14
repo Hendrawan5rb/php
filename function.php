@@ -10,6 +10,7 @@
 <body>
 
     <h1><?= salam("Pagi", "Zee"); ?></h1>
+    <h2>Selanjutnya, <a href="array.php"><?= "Array" ?></h2></a>
 
     <?php
     // ---Ada Built-in Function PHP---
@@ -19,7 +20,7 @@
     /* mktime(0,0,0,0,0,0)
     jam, menit, detik, bulan, tanggal, tahun */
     echo date("l", mktime(0, 0, 0, 5, 26, 2002)) . "<br>";
-    echo date("l", strtotime("5 may 2002")) . "<br>";
+    echo date("l", strtotime("5 may 2002"));
 
     // ---Ada User Defined Function PHP---
     function salam($waktu = "Datang", $nama = "Admin")

@@ -9,7 +9,7 @@
 
 <body>
 
-    <h2>Selanjutnya, <a href="function.php"><?= "Function" ?></h2></a>
+    <?php include "sidebar.php"; ?>
 
     <?php
 

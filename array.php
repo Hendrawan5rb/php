@@ -9,6 +9,8 @@
 
 <body>
 
+    <?php include "sidebar.php"; ?>
+
     <?php
     // ---Cara penulisan array gaya lama---
     $array = array("Satu", 2, false);

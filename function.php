@@ -10,7 +10,8 @@
 <body>
 
     <h1><?= salam("Pagi", "Zee"); ?></h1>
-    <h2>Selanjutnya, <a href="array.php"><?= "Array" ?></h2></a>
+
+    <?php include "sidebar.php"; ?>
 
     <?php
     // ---Ada Built-in Function PHP---

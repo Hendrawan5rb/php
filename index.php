@@ -10,11 +10,55 @@
 <body>
     <h1>Dashboard</h1>
 
-    <?php include "sidebar.php"; ?>
+    <?php
+    require "connect.php";
+    require "sidebar.php";
 
-    <div>
+    // $result = mysqli_query($connect, "SELECT * FROM komik");
 
-    </div>
+    // if (!$result) {
+    //     echo mysqli_error($connect);
+    // }
+
+    // ---4 cara ambil data (fetch) dari object result---
+
+    // mysqli_fetch_row mengembalikan array numerik
+    // $row = mysqli_fetch_row($result);
+    // var_dump($row[1]);
+
+    // mysqli_fetch_array gabungan kedua di atas
+    // tapi index jadi dobel sehingga kemungkinan berat
+    // $array = mysqli_fetch_array($result);
+    // var_dump($array[0]);
+    // echo "<br>";
+    // var_dump($array["judul"]);
+
+    // mysqli_fetch_object mengembalikan object
+    // $object = mysqli_fetch_object($result);
+    // var_dump($object->judul);
+
+    // mysqli_fetch_assoc mengembalikan array asosiatif
+    // $assoc = mysqli_fetch_assoc($result);
+    // var_dump($assoc["id"]);
+
+    // while ($assoc = mysqli_fetch_assoc($result)) {
+    //     var_dump($assoc);
+    // }
+
+    $komik = query("SELECT * FROM komik");
+    foreach ($komik as $k) :
+    ?>
+
+        <a href="">
+            <div style="width: 100px; height: 200px; border: 1px solid black; float: left; margin: 10px;">
+                <img src="https://picsum.photos/id/<?= $k['id']; ?>/100" alt="Cover">
+                <p style="text-align: center;"><?= $k['judul']; ?></p>
+            </div>
+        </a>
+
+    <?php
+    endforeach;
+    ?>
 
 </body>
 

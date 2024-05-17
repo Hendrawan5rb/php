@@ -13,10 +13,10 @@
 
     <?php
     // ---Cara penulisan array gaya lama---
-    $array = array("Satu", 2, false);
+    $array = array('Satu', 2, false);
 
     // ---Cara penulisan array gaya baru---
-    $array2 = ["Empat", 5, true];
+    $array2 = ['Empat', 5, true];
 
     var_dump($array);
     echo "<br>";
@@ -60,9 +60,9 @@
             "jurusan" => "MM"
         ]
     ];
-    echo $ass[0]["nama"] . "<br>";
+    echo $ass[0]['nama'] . "<br>";
     foreach ($ass as $as) {
-        echo $as["nama"] . " " . $as["jurusan"] . " ";
+        echo $as['nama'] . " " . $as['jurusan'] . " ";
     }
     ?>
 

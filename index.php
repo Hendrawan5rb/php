@@ -12,8 +12,12 @@
 
     <?php
     require "connect.php";
-    require "sidebar.php";
+    include "sidebar.php";
+    ?>
 
+    <a style="display: block;" href="create.php"><button>Create Project</button></a>
+
+    <?php
     // $result = mysqli_query($connect, "SELECT * FROM komik");
 
     // if (!$result) {
@@ -31,7 +35,7 @@
     // $array = mysqli_fetch_array($result);
     // var_dump($array[0]);
     // echo "<br>";
-    // var_dump($array["judul"]);
+    // var_dump($array['judul']);
 
     // mysqli_fetch_object mengembalikan object
     // $object = mysqli_fetch_object($result);
@@ -39,13 +43,13 @@
 
     // mysqli_fetch_assoc mengembalikan array asosiatif
     // $assoc = mysqli_fetch_assoc($result);
-    // var_dump($assoc["id"]);
+    // var_dump($assoc['id']);
 
     // while ($assoc = mysqli_fetch_assoc($result)) {
     //     var_dump($assoc);
     // }
 
-    $komik = query("SELECT * FROM komik");
+    $komik = read("SELECT * FROM komik");
     foreach ($komik as $k) :
     ?>
 

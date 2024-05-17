@@ -28,3 +28,13 @@ function create($data)
 
     return mysqli_affected_rows($connect);
 }
+
+function delete($id)
+{
+    global $connect;
+
+    $query = "DELETE FROM komik WHERE id = '$id'";
+    mysqli_query($connect, $query);
+
+    return mysqli_affected_rows($connect);
+}

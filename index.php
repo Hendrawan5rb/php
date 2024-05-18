@@ -53,14 +53,20 @@
     foreach ($komik as $k) :
     ?>
 
-        <div style="width: 100px; height: 250px; border: 1px solid black; float: left; margin: 10px;">
+        <div style="width: 100px; height: 275px; border: 1px solid black; float: left; margin: 10px;">
             <a href="">
                 <img src="https://picsum.photos/id/<?= $k['id']; ?>/100" alt="Cover">
                 <p style="text-align: center;"><?= $k['judul']; ?></p>
             </a>
-            <a href="delete.php?id=<?= $k['id']; ?>" onclick="return confirm('Hapus?')">
-                <center><button type="submit">Hapus</button></center>
-            </a>
+            <center>
+                <a href="update.php?id=<?= $k['id']; ?>">
+                    <button>Ubah</button>
+                </a>
+                <br><br>
+                <a href="delete.php?id=<?= $k['id']; ?>" onclick="return confirm('Hapus?')">
+                    <button>Hapus</button>
+                </a>
+            </center>
         </div>
 
     <?php

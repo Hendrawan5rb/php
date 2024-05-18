@@ -1,8 +1,12 @@
 <?php
 require "connect.php";
 
-if (isset($_POST['create'])) {
-    if (create($_POST) > 0) {
+$id = $_GET['id'];
+
+$komik = read("SELECT * FROM komik WHERE id = $id")[0];
+
+if (isset($_POST['update'])) {
+    if (update($_POST) > 0) {
         echo "<script>
             alert('Berhasil');
             document.location.href= 'index.php'
@@ -10,7 +14,7 @@ if (isset($_POST['create'])) {
     } else {
         echo "<script>
             alert('Gagal');
-            document.location.href= 'create.php'
+            document.location.href= 'update.php'
         </script>";
     }
 }
@@ -22,11 +26,11 @@ if (isset($_POST['create'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Project</title>
+    <title>Update Project</title>
 </head>
 
 <body>
-    <h1>Create Project</h1>
+    <h1>Update Project</h1>
 
     <a href="index.php"><button>Kembali </button></a>
     <br><br>
@@ -40,7 +44,8 @@ if (isset($_POST['create'])) {
                 </td>
                 <td> : </td>
                 <td>
-                    <input type="text" name="judul" id="judul" required>
+                    <input type="hidden" name="id" id="id" value="<?= $komik['id']; ?>" required>
+                    <input type="text" name="judul" id="judul" value="<?= $komik['judul']; ?>" required>
                 </td>
             </tr>
             <tr>
@@ -50,7 +55,7 @@ if (isset($_POST['create'])) {
                 <td> : </td>
                 </td>
                 <td>
-                    <textarea name="ide" id="ide"></textarea>
+                    <textarea name="ide" id="ide"><?= $komik['ide']; ?></textarea>
                 </td>
             </tr>
             <tr>
@@ -60,7 +65,7 @@ if (isset($_POST['create'])) {
                 <td> : </td>
                 </td>
                 <td>
-                    <textarea name="premis" id="premis"></textarea>
+                    <textarea name="premis" id="premis"><?= $komik['premis']; ?></textarea>
                 </td>
             </tr>
             <tr>
@@ -76,7 +81,7 @@ if (isset($_POST['create'])) {
         </table>
 
         <br>
-        <button type="submit" name="create">Create</button>
+        <button type="submit" name="update">Update</button>
 
     </form>
 

@@ -14,6 +14,13 @@ function read($query)
     return $rows;
 }
 
+function search($keyword)
+{
+    $query = "SELECT * FROM komik WHERE judul LIKE '%$keyword%' OR ide LIKE '%$keyword%' OR premis LIKE '%$keyword%' ORDER BY id DESC";
+
+    return read($query);
+}
+
 function create($data)
 {
     global $connect;

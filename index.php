@@ -13,9 +13,24 @@
     <?php
     require "connect.php";
     include "sidebar.php";
+
+    if (isset($_POST['search'])) {
+        $komik = search($_POST['keyword']);
+    } else {
+        $komik = read("SELECT * FROM komik ORDER BY id DESC");
+    }
     ?>
 
     <a style="display: block;" href="create.php"><button>Create Project</button></a>
+
+    <br>
+
+    <form method="POST">
+        <input type="text" name="keyword" id="keyword" autofocus>
+        <button type="submit" name="search">Cari</button>
+    </form>
+
+    <br>
 
     <?php
     // $result = mysqli_query($connect, "SELECT * FROM komik");
@@ -49,7 +64,6 @@
     //     var_dump($assoc);
     // }
 
-    $komik = read("SELECT * FROM komik");
     foreach ($komik as $k) :
     ?>
 

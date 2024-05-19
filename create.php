@@ -31,7 +31,7 @@ if (isset($_POST['create'])) {
     <a href="index.php"><button>Kembali </button></a>
     <br><br>
 
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
 
         <table>
             <tr>
@@ -55,7 +55,7 @@ if (isset($_POST['create'])) {
             </tr>
             <tr>
                 <td>
-                    <label for="ide">Premis</label>
+                    <label for="premis">Premis</label>
                 </td>
                 <td> : </td>
                 </td>
@@ -65,7 +65,7 @@ if (isset($_POST['create'])) {
             </tr>
             <tr>
                 <td>
-                    <label for="ide">Gambar</label>
+                    <label for="gambar">Gambar</label>
                 </td>
                 <td> : </td>
                 </td>

@@ -64,27 +64,35 @@
     //     var_dump($assoc);
     // }
 
-    foreach ($komik as $k) :
+    if ($komik == false) {
     ?>
 
-        <div style="width: 100px; height: 275px; border: 1px solid black; float: left; margin: 10px;">
-            <a href="">
-                <img src="https://picsum.photos/id/<?= $k['id']; ?>/100" alt="Cover">
-                <p style="text-align: center;"><?= $k['judul']; ?></p>
-            </a>
-            <center>
-                <a href="update.php?id=<?= $k['id']; ?>">
-                    <button>Ubah</button>
+        <p>Tidak ada data dalam database</p>
+
+        <?php
+    } else {
+        foreach ($komik as $k) :
+        ?>
+
+            <div style="width: 100px; height: 275px; border: 1px solid black; float: left; margin: 10px;">
+                <a href="">
+                    <img src="<?= $k['gambar']; ?>" width="100" alt="Cover">
+                    <p style="text-align: center;"><?= $k['judul']; ?></p>
                 </a>
-                <br><br>
-                <a href="delete.php?id=<?= $k['id']; ?>" onclick="return confirm('Hapus?')">
-                    <button>Hapus</button>
-                </a>
-            </center>
-        </div>
+                <center>
+                    <a href="update.php?id=<?= $k['id']; ?>">
+                        <button>Ubah</button>
+                    </a>
+                    <br><br>
+                    <a href="delete.php?id=<?= $k['id']; ?>&gambar=<?= $k['gambar']; ?>" onclick="return confirm('Hapus?')">
+                        <button>Hapus</button>
+                    </a>
+                </center>
+            </div>
 
     <?php
-    endforeach;
+        endforeach;
+    }
     ?>
 
 </body>

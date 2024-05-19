@@ -2,8 +2,9 @@
 require "connect.php";
 
 $id = $_GET['id'];
+$gambar = $_GET['gambar'];
 
-if (delete($id) > 0) {
+if (delete($id, $gambar) > 0) {
     echo "<script>
             alert('Berhasil');
             document.location.href= 'index.php'

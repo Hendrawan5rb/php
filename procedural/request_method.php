@@ -12,7 +12,7 @@
     <h1>Selamat datang, <?= (isset($_GET['nama'])) ? $_GET['nama'] : "Admin"; ?></h1>
     <h2><?= (isset($_POST['jurusan'])) ? "Dari jurusan " . $_POST['jurusan'] : ""; ?></h2>
 
-    <?php include "sidebar.php"; ?>
+    <?php include "../sidebar.php"; ?>
 
     <?php
     $a = 7;

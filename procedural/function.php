@@ -11,7 +11,7 @@
 
     <h1><?= salam("Pagi", "Zee"); ?></h1>
 
-    <?php include "sidebar.php"; ?>
+    <?php include "../sidebar.php"; ?>
 
     <?php
     // ---Ada Built-in Function PHP---

@@ -10,7 +10,7 @@
 <body>
     <h1>Selamat datang, <?php echo "Zee" ?></h1>
 
-    <?php include "sidebar.php"; ?>
+    <?php include "../sidebar.php"; ?>
 
     <?php
 

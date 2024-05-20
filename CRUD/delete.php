@@ -1,5 +1,5 @@
 <?php
-require "connect.php";
+require "../connect.php";
 
 $id = $_GET['id'];
 $gambar = $_GET['gambar'];

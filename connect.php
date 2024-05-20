@@ -43,7 +43,7 @@ function create($data)
         }
     }
 
-    $query = "INSERT INTO komik (judul, ide, premis, gambar) VALUES ('$judul', '$ide', '$premis', '$gambar');";
+    $query = "INSERT INTO komik (judul, ide, premis, gambar) VALUES ('$judul', '$ide', '$premis', '$gambar')";
     mysqli_query($connect, $query);
 
     return mysqli_affected_rows($connect);
@@ -86,7 +86,7 @@ function upload($gambar_lama = "")
     $nama_file_baru .= ".";
     $nama_file_baru .= $extension;
 
-    move_uploaded_file($tmp, 'img/' . $nama_file_baru);
+    move_uploaded_file($tmp, '../img/' . $nama_file_baru);
     unlink($gambar_lama);
 
     return "img/" . $nama_file_baru;
@@ -125,6 +125,32 @@ function delete($id, $gambar)
     if (mysqli_affected_rows($connect) > 0) {
         unlink($gambar);
     }
+
+    return mysqli_affected_rows($connect);
+}
+
+function register($data)
+{
+    global $connect;
+
+    $username = strtolower(stripslashes($data['username']));
+    $password = mysqli_real_escape_string($connect, $data['password']);
+    $confirm = mysqli_real_escape_string($connect, $data['confirm']);
+
+    $result = mysqli_query($connect, "SELECT username FROM users WHERE username = '$username'");
+    if (mysqli_fetch_assoc($result)) {
+        echo "<script>alert('Username sudah terdaftar. Mohon buat username lain.')</script>";
+        return false;
+    }
+
+    if ($password !== $confirm) {
+        echo "<script>alert('Password dan Konfirmasi Password tidak sama')</script>";
+        return false;
+    }
+
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    mysqli_query($connect, "INSERT INTO users (username, password) VALUES ('$username', '$password')");
 
     return mysqli_affected_rows($connect);
 }

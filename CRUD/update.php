@@ -1,6 +1,11 @@
 <?php
 require "../connect.php";
 
+if (!isset($_SESSION['login'])) {
+    header("Location: /auth/login.php");
+    exit;
+}
+
 $id = $_GET['id'];
 
 $komik = read("SELECT * FROM komik WHERE id = $id")[0];

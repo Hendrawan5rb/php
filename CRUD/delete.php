@@ -1,6 +1,11 @@
 <?php
 require "../connect.php";
 
+if (!isset($_SESSION['login'])) {
+    header("Location: /auth/login.php");
+    exit;
+}
+
 $id = $_GET['id'];
 $gambar = $_GET['gambar'];
 

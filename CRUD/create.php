@@ -1,6 +1,11 @@
 <?php
 require "../connect.php";
 
+if (!isset($_SESSION['login'])) {
+    header("Location: /auth/login.php");
+    exit;
+}
+
 if (isset($_POST['create'])) {
     if (create($_POST) > 0) {
         echo "<script>

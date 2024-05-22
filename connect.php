@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Memakai mysqli
 $connect = mysqli_connect("localhost", "root", "", "php");
 
@@ -166,6 +168,7 @@ function login($data)
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row['password'])) {
+            $_SESSION['login'] = true;
             header("Location: /CRUD/read.php");
             exit;
         }

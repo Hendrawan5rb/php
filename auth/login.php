@@ -1,6 +1,11 @@
 <?php
 require "../connect.php";
 
+if (isset($_SESSION['login'])) {
+    header("Location: /CRUD/read.php");
+    exit;
+}
+
 if (isset($_POST['login'])) {
     if (login($_POST) === false) {
         echo "<script>alert('Username atau password salah');</script>";

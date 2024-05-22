@@ -1,3 +1,12 @@
+<?php
+require "../connect.php";
+
+if (!isset($_SESSION['login'])) {
+    header("Location: /auth/login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +20,6 @@
     <h1>Dashboard</h1>
 
     <?php
-    require "../connect.php";
     include "../sidebar.php";
 
     if (isset($_POST['search'])) {

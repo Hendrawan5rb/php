@@ -11,9 +11,9 @@
 
     <h1><?= salam("Pagi", "Zee"); ?></h1>
 
-    <?php include "../sidebar.php"; ?>
-
     <?php
+    include "../sidebar.php";
+
     // ---Ada Built-in Function PHP---
     echo date("l, d-M-Y") . "<br>";
     echo time() . "<br>";

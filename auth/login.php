@@ -1,14 +1,10 @@
 <?php
 require "../connect.php";
 
-if (isset($_POST['register'])) {
-    if (register($_POST) > 0) {
-        echo "<script>
-        alert('Registrasi Berhasil');
-        document.location.href= '/CRUD/read.php';
-        </script>";
-    } else {
-        mysqli_error($connect);
+if (isset($_POST['login'])) {
+    if (login($_POST) === false) {
+        echo "<script>alert('Username atau password salah');</script>";
+        // mysqli_error($connect);
     }
 }
 ?>
@@ -19,7 +15,7 @@ if (isset($_POST['register'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Login</title>
 </head>
 
 <body>
@@ -35,14 +31,9 @@ if (isset($_POST['register'])) {
                 <td>:</td>
                 <td><input type="password" name="password" id="password"></td>
             </tr>
-            <tr>
-                <td><label for="confirm">Confirm Password</label></td>
-                <td>:</td>
-                <td><input type="password" name="confirm" id="confirm"></td>
-            </tr>
         </table>
 
-        <button type="submit" name="register">Register</button>
+        <button type="submit" name="login">Login</button>
     </form>
 </body>
 

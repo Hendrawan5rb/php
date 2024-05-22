@@ -52,14 +52,20 @@ function create($data)
 function upload($gambar_lama = "")
 {
     $nama_file = $_FILES['gambar']['name'];
-    // $ext_file = strtolower($_FILES['gambar']['type']);
     $ukuran_file = $_FILES['gambar']['size'];
-    // $error = $_FILES['gambar']['error'];
     $tmp = $_FILES['gambar']['tmp_name'];
+    // $ext_file = strtolower($_FILES['gambar']['type']);
+    // $error = $_FILES['gambar']['error'];
 
     // if ($error === 4) {
     //     echo "<script>alert('Pilih gambar terlebih dahulu')</script>";
     //     return false;
+    // }
+
+    // ---Masih bisa di bypass juga---
+    // $ext = ['image/jpg', 'image/jpeg', 'image/png'];
+    // if (!in_array($ext_file, $ext)) {
+    //     echo "<script>alert('Yang anda upload bukan gambar')</script>";
     // }
 
     // ---Masih bisa di bypass---
@@ -70,12 +76,6 @@ function upload($gambar_lama = "")
         echo "<script>alert('Yang anda upload bukan gambar')</script>";
         return false;
     }
-
-    // ---Masih bisa di bypass juga---
-    // $ext = ['image/jpg', 'image/jpeg', 'image/png'];
-    // if (!in_array($ext_file, $ext)) {
-    //     echo "<script>alert('Yang anda upload bukan gambar')</script>";
-    // }
 
     if ($ukuran_file > 1048576) {
         echo "<script>alert('Ukuran gambar terlalu besar')</script>";
@@ -153,4 +153,23 @@ function register($data)
     mysqli_query($connect, "INSERT INTO users (username, password) VALUES ('$username', '$password')");
 
     return mysqli_affected_rows($connect);
+}
+
+function login($data)
+{
+    global $connect;
+
+    $username = $data['username'];
+    $password = $data['password'];
+
+    $result = mysqli_query($connect, "SELECT username, password FROM users WHERE username = '$username'");
+    if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row['password'])) {
+            header("Location: /CRUD/read.php");
+            exit;
+        }
+    }
+
+    return false;
 }

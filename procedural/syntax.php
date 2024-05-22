@@ -10,9 +10,8 @@
 <body>
     <h1>Selamat datang, <?php echo "Zee" ?></h1>
 
-    <?php include "../sidebar.php"; ?>
-
     <?php
+    include "../sidebar.php";
 
     // Komentar satu baris
 
@@ -115,7 +114,6 @@
     print "print : " .  "Hello Zawarudo" . "<br>";
     print_r("print_r : " . "Hello Zawarudo" . "<br><br>");
     var_dump("var_dump  : " . "Hello Zawarudo");
-
     ?>
 
 </body>

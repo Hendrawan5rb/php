@@ -9,9 +9,8 @@
 
 <body>
 
-    <?php include "../sidebar.php"; ?>
-
     <?php
+    include "../sidebar.php";
 
     /* Perulangan for terdiri dari 3 bagian.
     1. Inisialisasi (Menentukan variabel awal untuk pengulangan. Biasanya $i, index.)
@@ -76,7 +75,6 @@
             echo "IDK";
             break;
     }
-
     ?>
 
     <br><br>

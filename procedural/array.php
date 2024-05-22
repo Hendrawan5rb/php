@@ -9,9 +9,9 @@
 
 <body>
 
-    <?php include "../sidebar.php"; ?>
-
     <?php
+    include "../sidebar.php";
+
     // ---Cara penulisan array gaya lama---
     $array = array('Satu', 2, false);
 

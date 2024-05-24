@@ -22,10 +22,29 @@ if (!isset($_SESSION['login'])) {
     <?php
     include "../sidebar.php";
 
-    if (isset($_POST['search'])) {
-        $komik = search($_POST['keyword']);
+    if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
+        $keyword = $_GET['keyword'];
+
+        $limit = 10;
+        $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
+        $offset = $limit * $page - $limit;
+
+        $total_data = count(read("SELECT judul FROM komik WHERE judul LIKE '%$keyword%' OR ide LIKE '%$keyword%' OR premis LIKE '%$keyword%' ORDER BY id DESC"));
+
+        $total_halaman = ceil($total_data / $limit);
+
+        $komik = search($keyword, $limit, $offset);
     } else {
-        $komik = read("SELECT * FROM komik ORDER BY id DESC");
+
+        $limit = 10;
+        $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
+        $offset = $limit * $page - $limit;
+
+        $total_data = count(read("SELECT judul FROM komik"));
+
+        $total_halaman = ceil($total_data / $limit);
+
+        $komik = read("SELECT * FROM komik ORDER BY id DESC LIMIT $offset, $limit");
     }
     ?>
 
@@ -33,9 +52,9 @@ if (!isset($_SESSION['login'])) {
 
     <br>
 
-    <form method="POST">
+    <form method="GET" action="read.php">
         <input type="text" name="keyword" id="keyword" autofocus>
-        <button type="submit" name="search">Cari</button>
+        <button type="submit">Cari</button>
     </form>
 
     <br>
@@ -102,6 +121,26 @@ if (!isset($_SESSION['login'])) {
         endforeach;
     }
     ?>
+
+    <div style="position: fixed; bottom: 0; text-align: center; width: 100%; left: 0;">
+
+        <?php if ($page > 1) : ?>
+            <a href="?keyword=<?= isset($keyword) ? $keyword : ""; ?>&page=<?= $page - 1; ?>"><button>&laquo;</button></a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $total_halaman; $i++) : ?>
+            <?php if ($i == $page) : ?>
+                <a href="?keyword=<?= isset($keyword) ? $keyword : ""; ?>&page=<?= $i; ?>" style="color: red;"><button><?= $i; ?></button></a>
+            <?php else : ?>
+                <a href="?keyword=<?= isset($keyword) ? $keyword : ""; ?>&page=<?= $i; ?>"><button><?= $i; ?></button></a>
+            <?php endif; ?>
+        <?php endfor; ?>
+
+        <?php if ($page < $total_halaman) : ?>
+            <a href="?keyword=<?= isset($keyword) ? $keyword : ""; ?>&page=<?= $page + 1; ?>"><button>&raquo;</button></a>
+        <?php endif; ?>
+
+    </div>
 
 </body>
 

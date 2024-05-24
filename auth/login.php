@@ -41,7 +41,7 @@ if (isset($_POST['login'])) {
             <tr>
                 <td><label for="username">Username</label></td>
                 <td>:</td>
-                <td><input type="text" name="username" id="username"></td>
+                <td><input type="text" name="username" id="username" autofocus></td>
             </tr>
             <tr>
                 <td><label for="password">Password</label></td>

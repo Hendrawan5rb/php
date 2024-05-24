@@ -33,7 +33,7 @@ if (isset($_POST['create'])) {
 <body>
     <h1>Create Project</h1>
 
-    <a href="index.php"><button>Kembali </button></a>
+    <a href="read.php"><button>Kembali </button></a>
     <br><br>
 
     <form method="POST" enctype="multipart/form-data">
@@ -45,7 +45,7 @@ if (isset($_POST['create'])) {
                 </td>
                 <td> : </td>
                 <td>
-                    <input type="text" name="judul" id="judul" required>
+                    <input type="text" name="judul" id="judul" autofocus required>
                 </td>
             </tr>
             <tr>

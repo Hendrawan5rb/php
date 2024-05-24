@@ -38,7 +38,7 @@ if (isset($_POST['update'])) {
 <body>
     <h1>Update Project</h1>
 
-    <a href="index.php"><button>Kembali </button></a>
+    <a href="read.php"><button>Kembali </button></a>
     <br><br>
 
     <form method="POST" enctype="multipart/form-data">
@@ -52,7 +52,7 @@ if (isset($_POST['update'])) {
                 <td>
                     <input type="hidden" name="id" id="id" value="<?= $komik['id']; ?>" required>
                     <input type="hidden" name="gambar_lama" id="gambar_lama" value="<?= $komik['gambar']; ?>" required>
-                    <input type="text" name="judul" id="judul" value="<?= $komik['judul']; ?>" required>
+                    <input type="text" name="judul" id="judul" value="<?= $komik['judul']; ?>" autofocus required>
                 </td>
             </tr>
             <tr>

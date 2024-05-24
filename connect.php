@@ -21,9 +21,9 @@ function read($query)
     }
 }
 
-function search($keyword)
+function search($keyword, $limit, $offset)
 {
-    $query = "SELECT * FROM komik WHERE judul LIKE '%$keyword%' OR ide LIKE '%$keyword%' OR premis LIKE '%$keyword%' ORDER BY id DESC";
+    $query = "SELECT * FROM komik WHERE judul LIKE '%$keyword%' OR ide LIKE '%$keyword%' OR premis LIKE '%$keyword%' ORDER BY id DESC LIMIT $offset, $limit";
 
     return read($query);
 }
@@ -37,7 +37,7 @@ function create($data)
     $premis = htmlspecialchars($data['premis']);
 
     if (!is_uploaded_file($_FILES['gambar']['tmp_name'])) {
-        $gambar = htmlspecialchars("https://picsum.photos/id/" . rand(1, 100) . "/100");
+        $gambar = htmlspecialchars("https://picsum.photos/id/" . rand(1, 100) . "/100/100");
     } else {
         $gambar = upload();
         if (!$gambar) {
@@ -173,7 +173,7 @@ function login($data)
 
             if (isset($data['remember'])) {
                 setcookie('identifier', $row['id'], time() + 60 * 60 * 24 * 30, '/');
-                setcookie('login', hash('sha256', $row['username']), time() + 60, '/');
+                setcookie('login', hash('sha256', $row['username']), time() + 60 * 60 * 24 * 30, '/');
             }
 
             $_SESSION['login'] = true;

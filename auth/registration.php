@@ -1,6 +1,23 @@
 <?php
 require "../connect.php";
 
+if (isset($_COOKIE['identifier']) && isset($_COOKIE['login'])) {
+    $id = $_COOKIE['identifier'];
+    $login = $_COOKIE['login'];
+
+    $result = mysqli_query($connect, "SELECT username FROM users WHERE id = $id");
+    $row = mysqli_fetch_assoc($result);
+
+    if ($login === hash('sha256', $row['username'])) {
+        $_SESSION['login'] = true;
+    }
+}
+
+if (isset($_SESSION['login'])) {
+    header("Location: /CRUD/read.php");
+    exit;
+}
+
 if (isset($_POST['register'])) {
     if (register($_POST) > 0) {
         echo "<script>
@@ -41,6 +58,9 @@ if (isset($_POST['register'])) {
                 <td><input type="password" name="confirm" id="confirm"></td>
             </tr>
         </table>
+
+        <a href="login.php">Already have an account?</a>
+        <br><br>
 
         <button type="submit" name="register">Register</button>
     </form>

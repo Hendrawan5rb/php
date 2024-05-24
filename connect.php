@@ -91,7 +91,7 @@ function upload($gambar_lama = "")
     move_uploaded_file($tmp, '../img/' . $nama_file_baru);
     unlink($gambar_lama);
 
-    return "img/" . $nama_file_baru;
+    return "../img/" . $nama_file_baru;
 }
 
 function update($data)
@@ -139,7 +139,7 @@ function register($data)
     $password = mysqli_real_escape_string($connect, $data['password']);
     $confirm = mysqli_real_escape_string($connect, $data['confirm']);
 
-    $result = mysqli_query($connect, "SELECT username FROM users WHERE username = '$username'");
+    $result = mysqli_query($connect, "SELECT * FROM users WHERE username = '$username'");
     if (mysqli_fetch_assoc($result)) {
         echo "<script>alert('Username sudah terdaftar. Mohon buat username lain.')</script>";
         return false;
@@ -154,6 +154,8 @@ function register($data)
 
     mysqli_query($connect, "INSERT INTO users (username, password) VALUES ('$username', '$password')");
 
+    $_SESSION['login'] = true;
+
     return mysqli_affected_rows($connect);
 }
 
@@ -164,11 +166,18 @@ function login($data)
     $username = $data['username'];
     $password = $data['password'];
 
-    $result = mysqli_query($connect, "SELECT username, password FROM users WHERE username = '$username'");
+    $result = mysqli_query($connect, "SELECT * FROM users WHERE username = '$username'");
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row['password'])) {
+
+            if (isset($data['remember'])) {
+                setcookie('identifier', $row['id'], time() + 60 * 60 * 24 * 30, '/');
+                setcookie('login', hash('sha256', $row['username']), time() + 60, '/');
+            }
+
             $_SESSION['login'] = true;
+
             header("Location: /CRUD/read.php");
             exit;
         }

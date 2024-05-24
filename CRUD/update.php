@@ -15,7 +15,7 @@ if (isset($_POST['update'])) {
     if (empty(update($_POST))) {
         echo "<script>
             alert('Berhasil');
-            document.location.href= 'index.php' 
+            document.location.href= 'read.php' 
         </script>";
     } else {
         echo "<script>

@@ -10,7 +10,7 @@ if (isset($_POST['create'])) {
     if (create($_POST) > 0) {
         echo "<script>
             alert('Berhasil');
-            document.location.href= 'index.php'
+            document.location.href= 'read.php'
         </script>";
     } else {
         echo "<script>

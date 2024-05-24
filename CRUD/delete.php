@@ -12,11 +12,11 @@ $gambar = $_GET['gambar'];
 if (delete($id, $gambar) > 0) {
     echo "<script>
             alert('Berhasil');
-            document.location.href= 'index.php'
+            document.location.href= 'read.php'
         </script>";
 } else {
     echo "<script>
             alert('Gagal');
-            document.location.href= 'index.php'
+            document.location.href= 'read.php'
         </script>";
 }

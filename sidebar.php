@@ -1,5 +1,5 @@
 <ul>
-    <li><a href="/CRUD/index.php">Dashboard</a></li>
+    <li><a href="/CRUD/read.php">Dashboard</a></li>
     <li><a href="/procedural/syntax.php">Syntax</a></li>
     <li><a href="/procedural/control_structure.php">Control Structure</a></li>
     <li><a href="/procedural/function.php">Function</a></li>

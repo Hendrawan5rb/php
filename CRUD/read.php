@@ -144,7 +144,8 @@ if (!isset($_SESSION['login'])) {
 
     </div>
 
-    <script src="js/ajax.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery.js"></script>
 
 </body>
 

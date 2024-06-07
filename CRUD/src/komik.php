@@ -14,11 +14,16 @@ if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
     $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
     $offset = $limit * $page - $limit;
 
-    $total_data = count(read("SELECT judul FROM komik WHERE judul LIKE '%$keyword%' OR ide LIKE '%$keyword%' OR premis LIKE '%$keyword%' ORDER BY id DESC"));
-
-    $total_halaman = ceil($total_data / $limit);
-
     $komik = search($keyword, $limit, $offset);
+
+    if ($komik !== false) {
+        $total_data = count(read("SELECT judul FROM komik WHERE judul LIKE '%$keyword%' OR ide LIKE '%$keyword%' OR premis LIKE '%$keyword%' ORDER BY id DESC"));
+
+        $total_halaman = ceil($total_data / $limit);
+    } else {
+        $total_data = 0;
+        $total_halaman = 0;
+    }
 } else {
 
     // echo "Not Search";

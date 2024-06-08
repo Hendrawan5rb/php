@@ -14,10 +14,17 @@ if (!isset($_SESSION['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Database</title>
+    <style>
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Dashboard</h1>
+    <h1 class="no-print">Dashboard</h1>
 
     <?php
     include "../sidebar.php";
@@ -48,11 +55,15 @@ if (!isset($_SESSION['login'])) {
     }
     ?>
 
-    <a style="display: block;" href="create.php"><button>Create Project</button></a>
+    <div>
+        <a href="create.php"><button class="no-print">Create Project</button></a>
+        <button onclick="window.print(); return false;" class="no-print">Print</button>
+        <a href="mpdf.php" target="_blank"><button class="no-print">Print mPDF</button></a>
+    </div>
 
     <br>
 
-    <form method="GET" action="read.php">
+    <form method=" GET" action="read.php" class="no-print">
         <input type="text" name="keyword" id="keyword" autofocus>
         <!-- <button type="submit" id="submit">Cari</button> -->
     </form>
@@ -96,7 +107,7 @@ if (!isset($_SESSION['login'])) {
         if ($komik == false) {
         ?>
 
-            <p>Tidak ada data dalam database</p>
+            <p>Data tidak ditemukan</p>
 
             <?php
         } else {
@@ -126,7 +137,7 @@ if (!isset($_SESSION['login'])) {
 
         <input type="hidden" id="total" value="<?= $total_halaman; ?>">
 
-        <div style="position: fixed; bottom: 0; text-align: center; width: 100%; left: 0;">
+        <div style="position: fixed; bottom: 0; text-align: center; width: 100%; left: 0;" class="no-print">
 
             <a href="#" id="previous"><button>&laquo;</button></a>
 

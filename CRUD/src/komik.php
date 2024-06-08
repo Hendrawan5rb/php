@@ -43,7 +43,7 @@ if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
 if ($komik == false) {
 ?>
 
-    <p>Tidak ada data dalam database</p>
+    <p>Data tidak ditemukan</p>
 
     <?php
 } else {

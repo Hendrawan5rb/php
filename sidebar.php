@@ -1,4 +1,4 @@
-<ul>
+<ul class="no-print">
     <li><a href="/CRUD/read.php">Dashboard</a></li>
     <li><a href="/procedural/syntax.php">Syntax</a></li>
     <li><a href="/procedural/control_structure.php">Control Structure</a></li>

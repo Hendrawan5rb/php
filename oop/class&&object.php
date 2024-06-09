@@ -20,6 +20,9 @@
         <hr>
 
         <?php
+        // Class bisa dianalogikan sebagai Blueprint Rumah
+        // Dan Object bisa dianalogikan sebagai Rumah
+
         class Komik
         {
         }

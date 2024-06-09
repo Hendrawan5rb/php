@@ -17,6 +17,7 @@
         <h3>Object Oriented</h3>
         <ul>
             <li><a href="/oop/class&&object.php">Class and Object</a></li>
+            <li><a href="/oop/property&&method.php">Property and Method</a></li>
         </ul>
     </li>
     <li>

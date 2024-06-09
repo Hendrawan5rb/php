@@ -1,5 +1,5 @@
 <?php
-require "../../connect.php";
+require "../connect.php";
 
 // var_dump($_GET['keyword']);
 // die;
@@ -10,7 +10,7 @@ if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
     // echo "Search";
     // die;
 
-    $limit = 10;
+    $limit = 16;
     $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
     $offset = $limit * $page - $limit;
 
@@ -29,7 +29,7 @@ if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
     // echo "Not Search";
     // die;
 
-    $limit = 10;
+    $limit = 16;
     $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
     $offset = $limit * $page - $limit;
 
@@ -73,7 +73,7 @@ if ($komik == false) {
 
 <input type="hidden" id="total" value="<?= $total_halaman; ?>">
 
-<div style="position: fixed; bottom: 0; text-align: center; width: 100%; left: 0;">
+<div style="position: fixed; bottom: 0; text-align: center; width: 100%; left: 100px;">
 
     <a href="#" id="previous"><button>&laquo;</button></a>
 

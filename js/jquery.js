@@ -24,7 +24,7 @@ $(document).ready(function () {
 
         // $('#container').load('src/komik.php?keyword=' + $('#keyword').val());
 
-        $.get('src/komik.php?keyword=' + $('#keyword').val(), function (data) {
+        $.get('/src/komik.php?keyword=' + $('#keyword').val(), function (data) {
             $('#container').html(data);
 
             total = $('#total').val();
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
         hal = $(this).attr('page');
 
-        $.get('src/komik.php?keyword=' + $('#keyword').val() + '&page=' + $(this).attr('page'), function (data) {
+        $.get('/src/komik.php?keyword=' + $('#keyword').val() + '&page=' + $(this).attr('page'), function (data) {
             $('#container').html(data);
 
             prevnext();
@@ -53,7 +53,7 @@ $(document).ready(function () {
 
         hal = hal - 1;
 
-        $.get('src/komik.php?keyword=' + $('#keyword').val() + '&page=' + hal, function (data) {
+        $.get('/src/komik.php?keyword=' + $('#keyword').val() + '&page=' + hal, function (data) {
             $('#container').html(data);
 
             prevnext();
@@ -65,7 +65,7 @@ $(document).ready(function () {
 
         hal = hal + 1;
 
-        $.get('src/komik.php?keyword=' + $('#keyword').val() + '&page=' + hal, function (data) {
+        $.get('/src/komik.php?keyword=' + $('#keyword').val() + '&page=' + hal, function (data) {
             $('#container').html(data);
 
             prevnext();

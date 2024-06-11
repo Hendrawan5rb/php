@@ -19,6 +19,7 @@
             <li><a href="/oop/class&&object.php">Class and Object</a></li>
             <li><a href="/oop/property&&method.php">Property and Method</a></li>
             <li><a href="/oop/constructor_method.php">Constructor Method</a></li>
+            <li><a href="/oop/object_type.php">Object Type</a></li>
         </ul>
     </li>
     <li>

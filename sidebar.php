@@ -21,6 +21,7 @@
             <li><a href="/oop/constructor_method.php">Constructor Method</a></li>
             <li><a href="/oop/object_type.php">Object Type</a></li>
             <li><a href="/oop/inheritance.php">Inheritance</a></li>
+            <li><a href="/oop/visibility.php">Visibility</a></li>
         </ul>
     </li>
     <li>

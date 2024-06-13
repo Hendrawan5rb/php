@@ -23,6 +23,7 @@
             <li><a href="/oop/inheritance.php">Inheritance</a></li>
             <li><a href="/oop/visibility.php">Visibility</a></li>
             <li><a href="/oop/setter&&getter.php">Setter and Getter</a></li>
+            <li><a href="/oop/static_keyword.php">Static Keyword</a></li>
         </ul>
     </li>
     <li>

@@ -24,6 +24,7 @@
             <li><a href="/oop/visibility.php">Visibility</a></li>
             <li><a href="/oop/setter&&getter.php">Setter and Getter</a></li>
             <li><a href="/oop/static_keyword.php">Static Keyword</a></li>
+            <li><a href="/oop/constant.php">Constant</a></li>
         </ul>
     </li>
     <li>

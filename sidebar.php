@@ -22,6 +22,7 @@
             <li><a href="/oop/object_type.php">Object Type</a></li>
             <li><a href="/oop/inheritance.php">Inheritance</a></li>
             <li><a href="/oop/visibility.php">Visibility</a></li>
+            <li><a href="/oop/setter&&getter.php">Setter and Getter</a></li>
         </ul>
     </li>
     <li>

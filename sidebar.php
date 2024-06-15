@@ -25,6 +25,7 @@
             <li><a href="/oop/setter&&getter.php">Setter and Getter</a></li>
             <li><a href="/oop/static_keyword.php">Static Keyword</a></li>
             <li><a href="/oop/constant.php">Constant</a></li>
+            <li><a href="/oop/abstract_class.php">Abstract Class</a></li>
         </ul>
     </li>
     <li>

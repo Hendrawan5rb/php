@@ -46,22 +46,31 @@ if (!isset($_SESSION['login'])) {
         $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
         $offset = $limit * $page - $limit;
 
-        $total_data = count(read("SELECT judul FROM komik WHERE judul LIKE '%$keyword%' OR ide LIKE '%$keyword%' OR premis LIKE '%$keyword%' ORDER BY id DESC"));
-
-        $total_halaman = ceil($total_data / $limit);
-
         $komik = search($keyword, $limit, $offset);
-    } else {
 
+        if ($komik !== false) {
+            $total_data = count(read("SELECT judul FROM komik WHERE judul LIKE '%$keyword%' OR ide LIKE '%$keyword%' OR premis LIKE '%$keyword%' ORDER BY id DESC"));
+
+            $total_halaman = ceil($total_data / $limit);
+        } else {
+            $total_data = 0;
+            $total_halaman = 0;
+        }
+    } else {
         $limit = 16;
         $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
         $offset = $limit * $page - $limit;
 
-        $total_data = count(read("SELECT judul FROM komik"));
-
-        $total_halaman = ceil($total_data / $limit);
-
         $komik = read("SELECT * FROM komik ORDER BY id DESC LIMIT $offset, $limit");
+
+        if ($komik !== false) {
+            $total_data = count(read("SELECT * FROM komik ORDER BY id DESC LIMIT $offset, $limit"));
+
+            $total_halaman = ceil($total_data / $limit);
+        } else {
+            $total_data = 0;
+            $total_halaman = 0;
+        }
     }
     ?>
 

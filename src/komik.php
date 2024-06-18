@@ -25,7 +25,6 @@ if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
         $total_halaman = 0;
     }
 } else {
-
     // echo "Not Search";
     // die;
 
@@ -33,11 +32,16 @@ if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
     $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
     $offset = $limit * $page - $limit;
 
-    $total_data = count(read("SELECT judul FROM komik"));
-
-    $total_halaman = ceil($total_data / $limit);
-
     $komik = read("SELECT * FROM komik ORDER BY id DESC LIMIT $offset, $limit");
+
+    if ($komik !== false) {
+        $total_data = count(read("SELECT * FROM komik ORDER BY id DESC LIMIT $offset, $limit"));
+
+        $total_halaman = ceil($total_data / $limit);
+    } else {
+        $total_data = 0;
+        $total_halaman = 0;
+    }
 }
 
 if ($komik == false) {

@@ -28,6 +28,7 @@
             <li><a href="/oop/abstract_class.php">Abstract Class</a></li>
             <li><a href="/oop/interface.php">Interface</a></li>
             <li><a href="/oop/autoloading/">Autoloading</a></li>
+            <li><a href="/oop/namespace/">Namespace</a></li>
         </ul>
     </li>
     <li>
